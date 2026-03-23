@@ -1,0 +1,76 @@
+# ============================================================
+# BEAUTY BASH — Decap CMS Configuration
+# ============================================================
+# IMPORTANT: Replace YOUR-GITHUB-USERNAME below with your
+# actual GitHub username before deploying.
+# ============================================================
+
+backend:
+  name: git-gateway
+  repo: YOUR-GITHUB-USERNAME/beauty-bash-website
+  branch: main
+
+# Where uploaded images get saved
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# ============================================================
+# COLLECTIONS — these define what your wife can edit
+# in the /admin dashboard
+# ============================================================
+collections:
+
+  # --- GALLERY PHOTOS ---
+  - name: "gallery"
+    label: "Gallery Photos"
+    label_singular: "Gallery Photo"
+    folder: "_data/gallery"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Photo", name: "image", widget: "image", hint: "Recommended: 900x1200px, under 300KB. Use squoosh.app to compress." }
+      - { label: "Caption / Tag", name: "tag", widget: "string", hint: "e.g. Bridal · Full Look" }
+      - { label: "Alt Text (for SEO)", name: "alt", widget: "string", hint: "Describe the photo, e.g. Bridal updo by Beauty Bash Vancouver" }
+
+  # --- TESTIMONIALS ---
+  - name: "testimonials"
+    label: "Testimonials"
+    label_singular: "Testimonial"
+    folder: "_data/testimonials"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Client Name", name: "name", widget: "string" }
+      - { label: "Service Type", name: "service", widget: "string", hint: "e.g. Bridal, Event Styling" }
+      - { label: "Year", name: "year", widget: "string", hint: "e.g. 2024" }
+      - { label: "Quote", name: "quote", widget: "text", hint: "The client's words — do not include the quotation marks" }
+
+  # --- PRICING ---
+  - name: "pricing"
+    label: "Pricing Packages"
+    label_singular: "Pricing Package"
+    folder: "_data/pricing"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Package Name", name: "title", widget: "string" }
+      - { label: "Starting Price (e.g. $195)", name: "price", widget: "string" }
+      - { label: "Price Note (e.g. per person · starting from)", name: "price_note", widget: "string" }
+      - { label: "Featured (Most Popular)", name: "featured", widget: "boolean", default: false }
+      - label: "What's Included"
+        name: "includes"
+        widget: "list"
+        hint: "Add each inclusion as a separate item"
+        field: { label: "Item", name: "item", widget: "string" }
+
+  # --- SERVICES ---
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "_data/services"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - { label: "Service Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Photo", name: "image", widget: "image", required: false, hint: "Recommended: 800x600px, under 200KB" }
