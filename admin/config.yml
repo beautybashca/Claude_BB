@@ -7,7 +7,7 @@
 
 backend:
   name: git-gateway
-  repo: YOUR-GITHUB-USERNAME/beauty-bash-website
+  repo: beautybashca/Claude_BB
   branch: main
 
 # Where uploaded images get saved
