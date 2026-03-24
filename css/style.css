@@ -252,6 +252,55 @@ p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
 .bb-testimonial-card__attr span { color: var(--gold); }
 
 /* ============================================================
+   BEAUTY BASH — CSS additions for testimonial location field
+   ============================================================
+   WHERE TO ADD THIS:
+   Paste both blocks into css/style.css.
+
+   Suggested locations:
+     .bb-testimonial-featured__location → after the
+       .bb-testimonial-featured__attr rule (around line 265)
+
+     .bb-testimonial-card__location → after the
+       .bb-testimonial-card__attr rule (around line 280)
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   Location line — carousel / featured testimonial
+   (homepage, beneath the "— Name · Service, Year" line)
+
+   ADDED: Sits one step below the attribution.
+   Smaller and fainter than the attribution to create clear
+   visual hierarchy: quote → attribution → location.
+   Uses the same letter-spacing treatment as the eyebrow labels.
+   ---------------------------------------------------------- */
+.bb-testimonial-featured__location {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  /* Slightly fainter than the attribution line above it */
+  color: rgba(240, 234, 224, 0.30);
+  margin-top: 8px;
+}
+
+
+/* ----------------------------------------------------------
+   Location line — testimonial cards
+   (testimonials.html full grid, beneath the attr line)
+
+   ADDED: Same visual treatment as the carousel location line
+   so the two contexts feel consistent.
+   ---------------------------------------------------------- */
+.bb-testimonial-card__location {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(240, 234, 224, 0.28);
+  margin-top: 6px;
+}
+
+/* ============================================================
    ABOUT
    ============================================================ */
 .bb-about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }

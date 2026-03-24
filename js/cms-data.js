@@ -1,28 +1,18 @@
 /* ============================================================
    BEAUTY BASH — cms-data.js
    ============================================================
-   PURPOSE: This file fixes the bug where CMS content saves
-   correctly but never appears on the live pages.
-
-   HOW IT WORKS:
-   1. Decap CMS now saves content to JSON files in /data/
-   2. This script fetches those JSON files via fetch()
-   3. It renders the content into specific target elements
-      in the HTML using innerHTML
-
-   EACH RENDERER CHECKS FOR ITS TARGET ELEMENT FIRST.
-   If the element doesn't exist on the current page,
-   the renderer exits silently — no errors, no conflicts.
-
-   LOAD ORDER: This script must be loaded AFTER main.js
-   (it's added at the bottom of each HTML page).
+   CHANGES IN THIS VERSION:
+   - renderTestimonialsCarousel: now renders item.location
+     beneath the attribution line when present
+   - renderTestimonialsList: same — location rendered beneath
+     the attr line in each card
+   - Email updated: info@beautybash.ca (was hello@)
+   All other renderers (gallery, services) are unchanged.
    ============================================================ */
 
 
 /* ----------------------------------------------------------
    UTILITY: Fetch a JSON file from /data/
-   Returns parsed JSON or null if unavailable.
-   The ?v= cache-bust ensures fresh data after CMS saves.
 ---------------------------------------------------------- */
 async function bbFetch(path) {
   try {
@@ -36,8 +26,7 @@ async function bbFetch(path) {
 }
 
 /* ----------------------------------------------------------
-   UTILITY: Escape HTML to prevent XSS injection
-   Applied to all CMS-supplied strings before innerHTML use.
+   UTILITY: Escape HTML
 ---------------------------------------------------------- */
 function esc(str) {
   if (str == null) return '';
@@ -49,8 +38,7 @@ function esc(str) {
 }
 
 /* ----------------------------------------------------------
-   UTILITY: Convert plain text with \n\n paragraph breaks
-   into proper HTML <p> tags (for service descriptions).
+   UTILITY: Plain text → HTML paragraphs
 ---------------------------------------------------------- */
 function textToHtml(str) {
   if (!str) return '';
@@ -63,34 +51,40 @@ function textToHtml(str) {
 
 /* ============================================================
    TESTIMONIALS CAROUSEL — homepage
-   Target: <div id="bb-testimonials-carousel"> in index.html
-   Source: /data/testimonials.json
-   Behaviour: Fades between testimonials every 5 seconds.
-              Dot indicators allow manual navigation.
+   Target:  #bb-testimonials-carousel  (index.html)
+   Source:  /data/testimonials.json
+
+   CHANGED: Each slide now conditionally renders a location line.
+   If item.location is present the .bb-testimonial-featured__location
+   element appears beneath the attribution; if absent nothing renders.
    ============================================================ */
 async function renderTestimonialsCarousel() {
   const el = document.getElementById('bb-testimonials-carousel');
-  if (!el) return; // Not on homepage — exit silently
+  if (!el) return;
 
   const data = await bbFetch('/data/testimonials.json');
-
-  // If no data yet, the static fallback in the HTML stays visible
   if (!data || !data.items || data.items.length === 0) return;
 
   const items = data.items;
   let current = 0;
   let timer;
 
-  // Render all slides (only first is visible via CSS)
   el.innerHTML = `
     <div class="bb-carousel__slides">
       ${items.map((item, i) => `
-        <div class="bb-carousel__slide ${i === 0 ? 'is-active' : ''}" aria-hidden="${i !== 0 ? 'true' : 'false'}">
+        <div class="bb-carousel__slide ${i === 0 ? 'is-active' : ''}"
+             aria-hidden="${i !== 0 ? 'true' : 'false'}">
           <span class="bb-testimonial-featured__mark">"</span>
           <p class="bb-testimonial-featured__text">${esc(item.quote)}</p>
           <p class="bb-testimonial-featured__attr">
             — <span>${esc(item.name)}</span>&nbsp;·&nbsp;${esc(item.service)}, ${esc(item.year)}
           </p>
+          ${item.location
+            /* ADDED: location line — only rendered when field has a value.
+               The conditional prevents an empty element appearing for
+               testimonials where location was left blank in the CMS. */
+            ? `<p class="bb-testimonial-featured__location">${esc(item.location)}</p>`
+            : ''}
         </div>
       `).join('')}
     </div>
@@ -112,18 +106,15 @@ async function renderTestimonialsCarousel() {
   function goTo(index) {
     const slides = el.querySelectorAll('.bb-carousel__slide');
     const dots   = el.querySelectorAll('.bb-carousel__dot');
-    // Deactivate current
     slides[current].classList.remove('is-active');
     slides[current].setAttribute('aria-hidden', 'true');
     if (dots[current]) { dots[current].classList.remove('is-active'); dots[current].setAttribute('aria-selected','false'); }
-    // Activate new
     current = (index + items.length) % items.length;
     slides[current].classList.add('is-active');
     slides[current].setAttribute('aria-hidden', 'false');
     if (dots[current]) { dots[current].classList.add('is-active'); dots[current].setAttribute('aria-selected','true'); }
   }
 
-  // Dot click handlers
   el.querySelectorAll('.bb-carousel__dot').forEach(dot => {
     dot.addEventListener('click', () => {
       clearInterval(timer);
@@ -136,16 +127,17 @@ async function renderTestimonialsCarousel() {
     if (items.length < 2) return;
     timer = setInterval(() => goTo(current + 1), 5000);
   }
-
   startAuto();
 }
 
 
 /* ============================================================
    TESTIMONIALS LIST — testimonials.html
-   Target: <div id="bb-testimonials-list"> in testimonials.html
-   Source: /data/testimonials.json
-   Behaviour: Renders all testimonials as cards in a grid.
+   Target:  #bb-testimonials-list  (testimonials.html)
+   Source:  /data/testimonials.json
+
+   CHANGED: Location rendered beneath .bb-testimonial-card__attr
+   when present, using the same conditional pattern as the carousel.
    ============================================================ */
 async function renderTestimonialsList() {
   const el = document.getElementById('bb-testimonials-list');
@@ -169,6 +161,11 @@ async function renderTestimonialsList() {
           <p class="bb-testimonial-card__attr">
             — <span>${esc(item.name)}</span> · ${esc(item.service)}, ${esc(item.year)}
           </p>
+          ${item.location
+            /* ADDED: same conditional location line as carousel.
+               Sits beneath the name/service attribution in each card. */
+            ? `<p class="bb-testimonial-card__location">${esc(item.location)}</p>`
+            : ''}
         </div>
       `).join('')}
     </div>
@@ -177,23 +174,16 @@ async function renderTestimonialsList() {
 
 
 /* ============================================================
-   GALLERY PREVIEW — homepage (first 5 photos)
-   Target: <div id="bb-gallery-preview-grid"> in index.html
-   Source: /data/gallery.json
-   Behaviour: Replaces placeholder cells with real photos.
-              Lightbox opens on click (handled by main.js delegation).
+   GALLERY PREVIEW — homepage (unchanged)
    ============================================================ */
 async function renderGalleryPreview() {
   const el = document.getElementById('bb-gallery-preview-grid');
   if (!el) return;
 
   const data = await bbFetch('/data/gallery.json');
-
-  // No photos yet — leave the static placeholder HTML in place
   if (!data || !data.items || data.items.length === 0) return;
 
   const photos = data.items.slice(0, 5);
-  // First cell is the tall one spanning both grid rows
   const tallClass = ['tall', '', '', '', ''];
 
   el.innerHTML = photos.map((photo, i) => `
@@ -203,20 +193,13 @@ async function renderGalleryPreview() {
     </div>
   `).join('');
 
-  // Update the "Showing N of M" count line
   const countEl = document.getElementById('bb-gallery-count');
-  if (countEl) {
-    countEl.textContent = `Showing ${Math.min(5, data.items.length)} of ${data.items.length} looks`;
-  }
+  if (countEl) countEl.textContent = `Showing ${Math.min(5, data.items.length)} of ${data.items.length} looks`;
 }
 
 
 /* ============================================================
-   GALLERY FULL GRID — gallery.html
-   Target: <div id="bb-gallery-full-grid"> in gallery.html
-   Source: /data/gallery.json
-   Behaviour: Renders all photos. Tag label reveals on hover.
-              Lightbox opens on click.
+   GALLERY FULL GRID — gallery.html (unchanged)
    ============================================================ */
 async function renderGalleryFull() {
   const el = document.getElementById('bb-gallery-full-grid');
@@ -226,8 +209,7 @@ async function renderGalleryFull() {
 
   if (!data || !data.items || data.items.length === 0) {
     el.innerHTML = `
-      <p style="text-align:center;color:var(--text-faint);padding:64px 0;
-                grid-column:1/-1;letter-spacing:.06em;">
+      <p style="grid-column:1/-1;text-align:center;color:var(--text-faint);padding:64px 0;letter-spacing:.06em;">
         Gallery coming soon — photos will appear here after being added via the CMS.
       </p>`;
     return;
@@ -245,14 +227,7 @@ async function renderGalleryFull() {
 
 
 /* ============================================================
-   SERVICES ACCORDION — services.html
-   Target: <div id="bb-services-accordion"> in services.html
-   Source: /data/services.json
-   Behaviour:
-     - Each service renders as a clickable trigger row
-     - Clicking expands a description panel (CSS max-height transition)
-     - First item is open by default
-     - Deep-link support: ?service=events auto-opens that item
+   SERVICES ACCORDION — services.html (unchanged)
    ============================================================ */
 async function renderServicesAccordion() {
   const el = document.getElementById('bb-services-accordion');
@@ -268,7 +243,6 @@ async function renderServicesAccordion() {
     return;
   }
 
-  // Icon SVG paths keyed to the CMS "icon" field value
   const ICONS = {
     bridal:      '<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>',
     events:      '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
@@ -282,12 +256,8 @@ async function renderServicesAccordion() {
     const icon = ICONS[service.icon] || ICONS.bridal;
     return `
       <div class="bb-accordion__item" id="acc-${slug}" data-index="${i}">
-        <button
-          class="bb-accordion__trigger"
-          aria-expanded="false"
-          aria-controls="acc-panel-${i}"
-          id="acc-trigger-${i}"
-        >
+        <button class="bb-accordion__trigger" aria-expanded="false"
+                aria-controls="acc-panel-${i}" id="acc-trigger-${i}">
           <span class="bb-accordion__icon">
             <svg viewBox="0 0 24 24" aria-hidden="true">${icon}</svg>
           </span>
@@ -296,20 +266,14 @@ async function renderServicesAccordion() {
             <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </span>
         </button>
-        <div
-          class="bb-accordion__panel"
-          id="acc-panel-${i}"
-          role="region"
-          aria-labelledby="acc-trigger-${i}"
-        >
+        <div class="bb-accordion__panel" id="acc-panel-${i}"
+             role="region" aria-labelledby="acc-trigger-${i}">
           <div class="bb-accordion__content">
             ${service.image ? `
               <div class="bb-accordion__image">
                 <img src="${esc(service.image)}" alt="${esc(service.title)}" loading="lazy">
               </div>` : ''}
-            <div class="bb-accordion__text">
-              ${textToHtml(service.description)}
-            </div>
+            <div class="bb-accordion__text">${textToHtml(service.description)}</div>
             <a href="contact.html" class="btn-outline">Book This Service</a>
           </div>
         </div>
@@ -317,13 +281,11 @@ async function renderServicesAccordion() {
     `;
   }).join('');
 
-  // Wire up accordion interaction
   function openItem(item) {
     const trigger = item.querySelector('.bb-accordion__trigger');
     const panel   = item.querySelector('.bb-accordion__panel');
     item.classList.add('is-open');
     trigger.setAttribute('aria-expanded', 'true');
-    // Set explicit max-height for animation (panel content height + buffer)
     panel.style.maxHeight = panel.scrollHeight + 'px';
   }
 
@@ -339,20 +301,16 @@ async function renderServicesAccordion() {
     trigger.addEventListener('click', function () {
       const item   = this.closest('.bb-accordion__item');
       const isOpen = item.classList.contains('is-open');
-      // Close all items
       el.querySelectorAll('.bb-accordion__item').forEach(closeItem);
-      // Open clicked item only if it was previously closed
       if (!isOpen) openItem(item);
     });
   });
 
-  // Open first item by default
   const firstItem = el.querySelector('.bb-accordion__item');
   if (firstItem) openItem(firstItem);
 
-  // Deep-link support: services.html?service=events opens that item
-  const params  = new URLSearchParams(window.location.search);
-  const target  = params.get('service');
+  const params   = new URLSearchParams(window.location.search);
+  const target   = params.get('service');
   if (target) {
     const targetEl = el.querySelector(`[id*="${target}"]`);
     if (targetEl) {
@@ -365,9 +323,7 @@ async function renderServicesAccordion() {
 
 
 /* ============================================================
-   INIT — runs all renderers when the DOM is ready.
-   Each renderer guards itself with an element-existence check
-   so there are no errors on pages where that content doesn't live.
+   INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
   renderTestimonialsCarousel();

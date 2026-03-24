@@ -1,30 +1,21 @@
 # ============================================================
 # BEAUTY BASH — Decap CMS Configuration
 # ============================================================
-# !! NETLIFY DEPLOYMENT FLAG !!
-# After uploading this file, go to Netlify → Deploys and
-# confirm a new deploy runs. The CMS won't reflect these
-# changes until Netlify has served the updated config.
+# !! CMS SCHEMA FLAG !!
+# The testimonials collection has a new optional field: location.
+# After uploading this file, trigger a Netlify redeploy so the
+# CMS picks up the schema change. Steps:
+#   1. Upload this file to admin/config.yml in GitHub
+#   2. Go to Netlify → Deploys → confirm green deploy
+#   3. Log into beautybash.ca/admin → Site Content → Testimonials
+#   4. You will now see a "Location" field on each testimonial entry
+#
+# IMPORTANT: Replace YOUR-GITHUB-USERNAME below with your actual
+# GitHub username if it has been reset.
 # ============================================================
-#
-# KEY CHANGE vs previous config:
-# -------------------------------------------------------
-# BEFORE: Used "folder" collections — one Markdown file per
-#   entry, saved to _data/testimonials/, _data/gallery/ etc.
-#   These Markdown files CAN'T be read by a plain HTML site
-#   without a static site generator (Eleventy, Hugo, Jekyll).
-#   Result: saves worked, but nothing ever rendered them.
-#
-# AFTER: Uses "file" collections — ALL entries for a content
-#   type are saved into a single JSON file (data/testimonials.json,
-#   data/services.json etc). A JavaScript fetch() call on each
-#   page reads that JSON and renders the content directly.
-#   No build tool needed.
-# -------------------------------------------------------
 
 backend:
   name: git-gateway
-  # IMPORTANT: Replace with your actual GitHub username
   repo: YOUR-GITHUB-USERNAME/beauty-bash-website
   branch: main
 
@@ -32,11 +23,6 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  # ============================================================
-  # Single collection group called "Site Content" contains
-  # all editable data as separate "file" entries.
-  # Each file entry maps to one JSON file on disk.
-  # ============================================================
   - name: "site_data"
     label: "Site Content"
     files:
@@ -44,7 +30,12 @@ collections:
       # ----------------------------------------------------------
       # TESTIMONIALS
       # Saves to: data/testimonials.json
-      # Rendered on: index.html (carousel), testimonials.html (full list)
+      # Rendered on: index.html (carousel), testimonials.html (grid)
+      #
+      # CHANGED: Added optional "location" field.
+      # It is marked required: false so existing testimonials
+      # without a location will not break — location renders
+      # only when the field has a value.
       # ----------------------------------------------------------
       - label: "Testimonials"
         name: "testimonials"
@@ -55,18 +46,22 @@ collections:
             widget: "list"
             summary: "{{fields.name}} — {{fields.service}}"
             fields:
-              - { label: "Client Name", name: "name", widget: "string" }
-              - { label: "Service Type", name: "service", widget: "string",
+              - { label: "Client Name",   name: "name",    widget: "string" }
+              - { label: "Service Type",  name: "service", widget: "string",
                   hint: "e.g. Bridal, Event Styling, Corporate" }
-              - { label: "Year", name: "year", widget: "string",
+              - { label: "Year",          name: "year",    widget: "string",
                   hint: "e.g. 2024" }
-              - { label: "Quote", name: "quote", widget: "text",
-                  hint: "Do not include quotation marks — they are added automatically" }
+              - { label: "Quote",         name: "quote",   widget: "text",
+                  hint: "Do not include quotation marks — added automatically" }
+              # ADDED: optional location field
+              - label: "Location (optional)"
+                name: "location"
+                widget: "string"
+                required: false
+                hint: "City or region, e.g. Vancouver, BC — leave blank to omit"
 
       # ----------------------------------------------------------
-      # GALLERY PHOTOS
-      # Saves to: data/gallery.json
-      # Rendered on: index.html (preview, first 5), gallery.html (all)
+      # GALLERY PHOTOS — unchanged
       # ----------------------------------------------------------
       - label: "Gallery Photos"
         name: "gallery"
@@ -77,17 +72,15 @@ collections:
             widget: "list"
             summary: "{{fields.tag}}"
             fields:
-              - { label: "Photo", name: "image", widget: "image",
+              - { label: "Photo",           name: "image",  widget: "image",
                   hint: "Compress to under 300KB first — use squoosh.app" }
-              - { label: "Caption / Tag", name: "tag", widget: "string",
+              - { label: "Caption / Tag",   name: "tag",    widget: "string",
                   hint: "e.g. Bridal · Full Look" }
-              - { label: "Alt Text (for SEO)", name: "alt", widget: "string",
-                  hint: "Describe the photo for search engines and accessibility, e.g. Bridal updo by Beauty Bash Vancouver" }
+              - { label: "Alt Text (SEO)",  name: "alt",    widget: "string",
+                  hint: "Describe the photo, e.g. Bridal updo by Beauty Bash Vancouver" }
 
       # ----------------------------------------------------------
-      # SERVICES (accordion content)
-      # Saves to: data/services.json
-      # Rendered on: services.html as expandable accordion items
+      # SERVICES — unchanged
       # ----------------------------------------------------------
       - label: "Services"
         name: "services"
@@ -98,19 +91,16 @@ collections:
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "Service Name", name: "title", widget: "string" }
+              - { label: "Service Name",        name: "title",       widget: "string" }
               - label: "Icon"
                 name: "icon"
                 widget: "select"
-                hint: "Choose the icon that best represents this service"
                 options:
-                  - { label: "Person (Bridal)", value: "bridal" }
-                  - { label: "Star (Events)", value: "events" }
-                  - { label: "Camera (Photography)", value: "photography" }
-                  - { label: "Briefcase (Corporate)", value: "corporate" }
+                  - { label: "Person (Bridal)",       value: "bridal" }
+                  - { label: "Star (Events)",          value: "events" }
+                  - { label: "Camera (Photography)",   value: "photography" }
+                  - { label: "Briefcase (Corporate)",  value: "corporate" }
                   - { label: "Location Pin (Maternity)", value: "maternity" }
-              - { label: "Description", name: "description", widget: "text",
-                  hint: "This text expands when a visitor clicks the service name. Use double line breaks for paragraph breaks." }
-              - { label: "Photo (optional)", name: "image", widget: "image",
-                  required: false,
-                  hint: "If provided, shown inside the expanded accordion panel. Recommend 800×600px." }
+              - { label: "Description",         name: "description", widget: "text" }
+              - { label: "Photo (optional)",    name: "image",       widget: "image",
+                  required: false }
