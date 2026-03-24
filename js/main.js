@@ -1,6 +1,13 @@
 /* ============================================================
    BEAUTY BASH — main.js
    Mobile navigation · Gallery lightbox · Smooth scroll
+
+   CHANGE: Lightbox now uses event delegation on document
+   instead of direct querySelectorAll listeners.
+   WHY: gallery cells are rendered by cms-data.js AFTER
+   DOMContentLoaded fires, so querySelectorAll('[data-lightbox]')
+   would find 0 elements at setup time. Event delegation
+   catches clicks on elements added at any point.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -14,11 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       nav.classList.toggle('is-open');
-      const isOpen = nav.classList.contains('is-open');
-      toggle.setAttribute('aria-expanded', isOpen);
+      toggle.setAttribute('aria-expanded', nav.classList.contains('is-open'));
     });
 
-    // Close menu when a link is clicked
     nav.querySelectorAll('.bb-nav__links a').forEach(function (link) {
       link.addEventListener('click', function () {
         nav.classList.remove('is-open');
@@ -26,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Close menu on outside click
     document.addEventListener('click', function (e) {
       if (!nav.contains(e.target)) {
         nav.classList.remove('is-open');
@@ -36,86 +40,81 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ----------------------------------------------------------
-     ACTIVE NAV LINK — highlights current page
+     ACTIVE NAV LINK
   ---------------------------------------------------------- */
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.bb-nav__links a').forEach(function (link) {
-    const linkPath = link.getAttribute('href').split('/').pop();
-    if (linkPath === currentPath) {
+    if (link.getAttribute('href').split('/').pop() === currentPath) {
       link.classList.add('active');
     }
   });
 
   /* ----------------------------------------------------------
-     LIGHTBOX — for gallery images
+     LIGHTBOX
+     CHANGED: Was addEventListener on each [data-lightbox] cell
+     found at page load. Now uses a single delegated listener
+     on document so it catches dynamically rendered gallery cells.
   ---------------------------------------------------------- */
-  const lightbox    = document.getElementById('bb-lightbox');
-  const lightboxImg = document.getElementById('bb-lightbox-img');
+  const lightbox      = document.getElementById('bb-lightbox');
+  const lightboxImg   = document.getElementById('bb-lightbox-img');
   const lightboxClose = document.getElementById('bb-lightbox-close');
 
-  if (lightbox && lightboxImg) {
+  function openLightbox(src, alt) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
 
-    // Open on gallery cell click
-    document.querySelectorAll('[data-lightbox]').forEach(function (cell) {
-      cell.addEventListener('click', function () {
-        const src = this.querySelector('img') ? this.querySelector('img').src : null;
-        const alt = this.querySelector('img') ? this.querySelector('img').alt : '';
-        if (src) {
-          lightboxImg.src = src;
-          lightboxImg.alt = alt;
-          lightbox.classList.add('is-open');
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    });
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    // Small delay before clearing src prevents flash
+    setTimeout(() => { if (lightboxImg) lightboxImg.src = ''; }, 300);
+  }
 
-    // Close on button click
-    if (lightboxClose) {
-      lightboxClose.addEventListener('click', closeLightbox);
-    }
+  // CHANGED: Single delegated listener — works for both
+  // static and dynamically added [data-lightbox] cells
+  document.addEventListener('click', function (e) {
+    const cell = e.target.closest('[data-lightbox]');
+    if (!cell) return;
+    const img = cell.querySelector('img');
+    if (img) openLightbox(img.src, img.alt);
+  });
 
-    // Close on backdrop click
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+  if (lightbox) {
     lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox) closeLightbox();
     });
-
-    // Close on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
-
-    function closeLightbox() {
-      lightbox.classList.remove('is-open');
-      document.body.style.overflow = '';
-      lightboxImg.src = '';
-    }
   }
 
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
   /* ----------------------------------------------------------
-     NAV SHADOW on scroll
+     NAV SHADOW ON SCROLL
   ---------------------------------------------------------- */
   if (nav) {
     window.addEventListener('scroll', function () {
-      if (window.scrollY > 20) {
-        nav.style.boxShadow = '0 4px 40px rgba(18,8,32,0.4)';
-      } else {
-        nav.style.boxShadow = 'none';
-      }
-    });
+      nav.style.boxShadow = window.scrollY > 20
+        ? '0 4px 40px rgba(18,8,32,0.4)'
+        : 'none';
+    }, { passive: true });
   }
 
   /* ----------------------------------------------------------
-     CONTACT FORM — client-side enhancement
-     Netlify handles the actual submission
+     CONTACT FORM — loading state
   ---------------------------------------------------------- */
   const contactForm = document.getElementById('bb-contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', function () {
       const btn = this.querySelector('[type="submit"]');
-      if (btn) {
-        btn.textContent = 'Sending…';
-        btn.disabled = true;
-      }
+      if (btn) { btn.textContent = 'Sending…'; btn.disabled = true; }
     });
   }
 

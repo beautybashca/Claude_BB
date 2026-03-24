@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Beauty Bash · Mobile Hair & Makeup Vancouver</title>
-  <meta name="description" content="Beauty Bash offers luxury mobile hair and makeup for brides, events, photography, corporate clients, and maternity shoots in Vancouver, BC.">
+  <title>Testimonials | Beauty Bash · Mobile Hair & Makeup Vancouver</title>
+  <meta name="description" content="Read what clients are saying about Beauty Bash — luxury mobile hair and makeup in Vancouver, BC.">
+  <meta property="og:title" content="Testimonials | Beauty Bash · Vancouver">
+  <meta property="og:url" content="https://beautybash.ca/testimonials.html">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- NAV — CHANGED: Pricing link removed, Testimonials link added -->
+  <!-- NAV — Pricing removed, Testimonials active -->
   <nav class="bb-nav" id="bb-nav">
     <a href="index.html" class="bb-nav__wordmark">Beauty <span>Bash</span></a>
     <div class="bb-nav__menu" id="bb-nav-menu">
@@ -28,54 +30,45 @@
   </nav>
 
   <div class="bb-page-hero">
-    <span class="eyebrow">What we offer</span>
-    <h1>Services</h1>
-    <p>Every service is tailored to you — mobile, professional, and delivered with care.</p>
+    <span class="eyebrow">From our clients</span>
+    <h1>What they're saying</h1>
+    <p>Real words from real people. Every booking starts with trust.</p>
   </div>
 
   <!-- ============================================================
-       SERVICES ACCORDION
-       CHANGED: Replaced the old static service card grid.
+       TESTIMONIALS LIST
+       NEW PAGE — Added in this update.
 
        HOW IT WORKS:
-       - cms-data.js fetches /data/services.json at page load
-       - It renders one .bb-accordion__item per service entry
-       - Clicking a trigger row expands its panel with animation
-       - First item is open by default
-       - Deep-link from homepage tiles works via ?service= param
+       - cms-data.js fetches /data/testimonials.json at page load
+       - It renders all testimonials as cards in .bb-testimonials-grid
+       - To add a testimonial: log into beautybash.ca/admin →
+         "Site Content" → "Testimonials" → add an entry → Save
+       - No code change needed to add, edit, or remove a testimonial
 
-       TO ADD/EDIT/REMOVE SERVICES:
-       - Log into beautybash.ca/admin
-       - Go to "Site Content" → "Services"
-       - Add, edit, or delete service entries
-       - Save — the accordion updates automatically
-
-       CMS SCHEMA FLAG:
-       Ensure admin/config.yml has been updated to the new
-       "file" collection format. If the CMS still shows the
-       old "folder" collection UI, force a Netlify redeploy
-       by making a small change to any file in the repo.
+       WHERE THE CONTENT RENDERS:
+       - Homepage: carousel (#bb-testimonials-carousel)
+       - This page: full card grid (#bb-testimonials-list)
+       Both pull from the same data/testimonials.json file.
        ============================================================ -->
   <section>
     <div class="container section-pad">
-
-      <!-- Target element: cms-data.js renders accordion items here -->
-      <div class="bb-accordion" id="bb-services-accordion">
-        <!-- Loading state — replaced immediately by cms-data.js -->
+      <!-- Target element — cms-data.js injects the .bb-testimonials-grid here -->
+      <div id="bb-testimonials-list">
+        <!-- Loading state -->
         <p style="text-align:center;color:var(--text-faint);padding:64px 0;letter-spacing:.06em;">
-          Loading services…
+          Loading testimonials…
         </p>
       </div>
-
     </div>
   </section>
 
-  <!-- CTA BANNER — CHANGED: Pricing link removed -->
+  <!-- CTA BANNER -->
   <div class="bb-cta-banner bb-section--alt">
     <div class="container">
-      <span class="eyebrow">Ready to begin?</span>
-      <h2>Tell me about your vision</h2>
-      <p>Every booking starts with a conversation. Reach out and let's find the perfect look for your moment.</p>
+      <span class="eyebrow">Ready for your moment?</span>
+      <h2>Let's create something beautiful</h2>
+      <p>Join the clients who've trusted Beauty Bash with their most important moments.</p>
       <div class="bb-cta-banner__actions">
         <a href="contact.html" class="btn-gold">Send an Inquiry</a>
         <a href="gallery.html" class="btn-ghost">View Gallery →</a>
@@ -83,7 +76,7 @@
     </div>
   </div>
 
-  <!-- FOOTER — CHANGED: Instagram URL updated to ca.beautybash -->
+  <!-- FOOTER — Instagram updated to ca.beautybash -->
   <footer class="bb-footer">
     <div class="container">
       <div class="bb-footer__top">
@@ -95,7 +88,6 @@
           <a href="https://facebook.com/beautybash" class="bb-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <!-- CHANGED: href updated to ca.beautybash -->
           <a href="https://instagram.com/ca.beautybash" class="bb-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(212,175,90,0.65)" stroke="none"/></svg>
           </a>
@@ -113,7 +105,6 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <!-- ADDED: cms-data.js renders the accordion -->
   <script src="js/cms-data.js"></script>
 </body>
 </html>

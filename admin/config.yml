@@ -1,76 +1,116 @@
 # ============================================================
 # BEAUTY BASH — Decap CMS Configuration
 # ============================================================
-# IMPORTANT: Replace YOUR-GITHUB-USERNAME below with your
-# actual GitHub username before deploying.
+# !! NETLIFY DEPLOYMENT FLAG !!
+# After uploading this file, go to Netlify → Deploys and
+# confirm a new deploy runs. The CMS won't reflect these
+# changes until Netlify has served the updated config.
 # ============================================================
+#
+# KEY CHANGE vs previous config:
+# -------------------------------------------------------
+# BEFORE: Used "folder" collections — one Markdown file per
+#   entry, saved to _data/testimonials/, _data/gallery/ etc.
+#   These Markdown files CAN'T be read by a plain HTML site
+#   without a static site generator (Eleventy, Hugo, Jekyll).
+#   Result: saves worked, but nothing ever rendered them.
+#
+# AFTER: Uses "file" collections — ALL entries for a content
+#   type are saved into a single JSON file (data/testimonials.json,
+#   data/services.json etc). A JavaScript fetch() call on each
+#   page reads that JSON and renders the content directly.
+#   No build tool needed.
+# -------------------------------------------------------
 
 backend:
   name: git-gateway
-  
+  # IMPORTANT: Replace with your actual GitHub username
+  repo: YOUR-GITHUB-USERNAME/beauty-bash-website
   branch: main
 
-# Where uploaded images get saved
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
-# ============================================================
-# COLLECTIONS — these define what your wife can edit
-# in the /admin dashboard
-# ============================================================
 collections:
+  # ============================================================
+  # Single collection group called "Site Content" contains
+  # all editable data as separate "file" entries.
+  # Each file entry maps to one JSON file on disk.
+  # ============================================================
+  - name: "site_data"
+    label: "Site Content"
+    files:
 
-  # --- GALLERY PHOTOS ---
-  - name: "gallery"
-    label: "Gallery Photos"
-    label_singular: "Gallery Photo"
-    folder: "_data/gallery"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Photo", name: "image", widget: "image", hint: "Recommended: 900x1200px, under 300KB. Use squoosh.app to compress." }
-      - { label: "Caption / Tag", name: "tag", widget: "string", hint: "e.g. Bridal · Full Look" }
-      - { label: "Alt Text (for SEO)", name: "alt", widget: "string", hint: "Describe the photo, e.g. Bridal updo by Beauty Bash Vancouver" }
+      # ----------------------------------------------------------
+      # TESTIMONIALS
+      # Saves to: data/testimonials.json
+      # Rendered on: index.html (carousel), testimonials.html (full list)
+      # ----------------------------------------------------------
+      - label: "Testimonials"
+        name: "testimonials"
+        file: "data/testimonials.json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — {{fields.service}}"
+            fields:
+              - { label: "Client Name", name: "name", widget: "string" }
+              - { label: "Service Type", name: "service", widget: "string",
+                  hint: "e.g. Bridal, Event Styling, Corporate" }
+              - { label: "Year", name: "year", widget: "string",
+                  hint: "e.g. 2024" }
+              - { label: "Quote", name: "quote", widget: "text",
+                  hint: "Do not include quotation marks — they are added automatically" }
 
-  # --- TESTIMONIALS ---
-  - name: "testimonials"
-    label: "Testimonials"
-    label_singular: "Testimonial"
-    folder: "_data/testimonials"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Client Name", name: "name", widget: "string" }
-      - { label: "Service Type", name: "service", widget: "string", hint: "e.g. Bridal, Event Styling" }
-      - { label: "Year", name: "year", widget: "string", hint: "e.g. 2024" }
-      - { label: "Quote", name: "quote", widget: "text", hint: "The client's words — do not include the quotation marks" }
+      # ----------------------------------------------------------
+      # GALLERY PHOTOS
+      # Saves to: data/gallery.json
+      # Rendered on: index.html (preview, first 5), gallery.html (all)
+      # ----------------------------------------------------------
+      - label: "Gallery Photos"
+        name: "gallery"
+        file: "data/gallery.json"
+        fields:
+          - label: "Photos"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.tag}}"
+            fields:
+              - { label: "Photo", name: "image", widget: "image",
+                  hint: "Compress to under 300KB first — use squoosh.app" }
+              - { label: "Caption / Tag", name: "tag", widget: "string",
+                  hint: "e.g. Bridal · Full Look" }
+              - { label: "Alt Text (for SEO)", name: "alt", widget: "string",
+                  hint: "Describe the photo for search engines and accessibility, e.g. Bridal updo by Beauty Bash Vancouver" }
 
-  # --- PRICING ---
-  - name: "pricing"
-    label: "Pricing Packages"
-    label_singular: "Pricing Package"
-    folder: "_data/pricing"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Package Name", name: "title", widget: "string" }
-      - { label: "Starting Price (e.g. $195)", name: "price", widget: "string" }
-      - { label: "Price Note (e.g. per person · starting from)", name: "price_note", widget: "string" }
-      - { label: "Featured (Most Popular)", name: "featured", widget: "boolean", default: false }
-      - label: "What's Included"
-        name: "includes"
-        widget: "list"
-        hint: "Add each inclusion as a separate item"
-        field: { label: "Item", name: "item", widget: "string" }
-
-  # --- SERVICES ---
-  - name: "services"
-    label: "Services"
-    label_singular: "Service"
-    folder: "_data/services"
-    create: false
-    slug: "{{slug}}"
-    fields:
-      - { label: "Service Name", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Photo", name: "image", widget: "image", required: false, hint: "Recommended: 800x600px, under 200KB" }
+      # ----------------------------------------------------------
+      # SERVICES (accordion content)
+      # Saves to: data/services.json
+      # Rendered on: services.html as expandable accordion items
+      # ----------------------------------------------------------
+      - label: "Services"
+        name: "services"
+        file: "data/services.json"
+        fields:
+          - label: "Services"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Service Name", name: "title", widget: "string" }
+              - label: "Icon"
+                name: "icon"
+                widget: "select"
+                hint: "Choose the icon that best represents this service"
+                options:
+                  - { label: "Person (Bridal)", value: "bridal" }
+                  - { label: "Star (Events)", value: "events" }
+                  - { label: "Camera (Photography)", value: "photography" }
+                  - { label: "Briefcase (Corporate)", value: "corporate" }
+                  - { label: "Location Pin (Maternity)", value: "maternity" }
+              - { label: "Description", name: "description", widget: "text",
+                  hint: "This text expands when a visitor clicks the service name. Use double line breaks for paragraph breaks." }
+              - { label: "Photo (optional)", name: "image", widget: "image",
+                  required: false,
+                  hint: "If provided, shown inside the expanded accordion panel. Recommend 800×600px." }

@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "name": "Sarah M.",
+      "service": "Bridal",
+      "year": "2024",
+      "quote": "She made me feel like the most beautiful version of myself. Every detail was flawless — I couldn't have imagined a better artist for my wedding day."
+    },
+    {
+      "name": "Jessica L.",
+      "service": "Bridal",
+      "year": "2024",
+      "quote": "Worth every penny. I felt like a completely different person — but the best version of myself. My photos are stunning."
+    },
+    {
+      "name": "Michelle T.",
+      "service": "Corporate",
+      "year": "2024",
+      "quote": "Professional, talented, and so warm. She made the whole team feel at ease. Highly recommend for corporate events."
+    },
+    {
+      "name": "Alyssa P.",
+      "service": "Maternity",
+      "year": "2023",
+      "quote": "My maternity photos are everything I dreamed of. The makeup was soft, beautiful, and lasted all day. Absolute perfection."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "Bridal Hair & Makeup",
+      "icon": "bridal",
+      "description": "Your wedding day deserves nothing less than perfection. From the first trial to the moment you walk down the aisle, I'm dedicated to making you look and feel extraordinary. Services include a pre-wedding trial, day-of hair styling, and full makeup application — all at your chosen location.\n\nBridal parties welcome. Pricing based on party size and services required.",
+      "image": ""
+    },
+    {
+      "title": "Event Styling",
+      "icon": "events",
+      "description": "Galas, celebrations, charity events, and milestone parties — whatever the occasion, you deserve a look that matches the moment. I bring the full studio experience to you, so you can focus on the celebration while I handle every detail of your hair and makeup.\n\nSingle clients and groups welcome. Available mornings, evenings, and weekends.",
+      "image": ""
+    },
+    {
+      "title": "Photography & Editorial",
+      "icon": "photography",
+      "description": "Makeup for the camera is an art of its own. Whether you're shooting a personal brand session, editorial spread, headshots, or a creative project, I understand how light and lens translate a look — and I'll ensure every detail holds up under the most demanding conditions.\n\nExperienced with both studio and on-location shoots. Hair and makeup included.",
+      "image": ""
+    },
+    {
+      "title": "Corporate",
+      "icon": "corporate",
+      "description": "Presentations, keynote stages, brand campaigns, and professional headshots — your appearance is part of your brand. I offer discreet, efficient makeup and styling services for executives, speakers, and teams who need to look their best under the spotlight.\n\nOn-site services available. Early morning availability for conference starts.",
+      "image": ""
+    },
+    {
+      "title": "Maternity & Newborn",
+      "icon": "maternity",
+      "description": "Celebrating new life deserves to be beautiful. I specialize in soft, radiant looks that complement the natural glow of expectant and new mothers — all using products that are gentle and safe. Perfect for maternity shoots, newborn welcome sessions, and family portraits.\n\nProducts are skin-safe and fragrance-conscious. Sessions available at your home or studio.",
+      "image": ""
+    }
+  ]
+}

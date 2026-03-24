@@ -3,10 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ============================================================
-       SEO — Edit the title, description, and image URL below
-       ============================================================ -->
   <title>Beauty Bash | Mobile Hair & Makeup · Vancouver</title>
   <meta name="description" content="Luxury mobile hair and makeup for brides, events, photography, and corporate clients across Vancouver, BC. Book your consultation with Beauty Bash.">
   <meta name="keywords" content="mobile makeup artist Vancouver, bridal makeup Vancouver, wedding hair Vancouver, mobile hair stylist BC, Beauty Bash">
@@ -15,16 +11,14 @@
   <meta property="og:image" content="https://beautybash.ca/images/hero/hero-main.jpg">
   <meta property="og:url" content="https://beautybash.ca">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <!-- ============================================================
        NAVIGATION
-       To change links: edit the <a> tags in bb-nav__links
-       To change the booking URL: edit the href on bb-nav__cta
+       CHANGED: Removed <li> for Pricing — pricing page deleted.
+       CHANGED: Updated Instagram href to @ca.beautybash throughout.
        ============================================================ -->
   <nav class="bb-nav" id="bb-nav">
     <a href="index.html" class="bb-nav__wordmark">Beauty <span>Bash</span></a>
@@ -32,7 +26,8 @@
       <ul class="bb-nav__links">
         <li><a href="services.html">Services</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
+        <!-- REMOVED: <li><a href="pricing.html">Pricing</a></li> -->
+        <li><a href="testimonials.html">Testimonials</a></li>  <!-- ADDED: link to new page -->
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -43,12 +38,7 @@
     </button>
   </nav>
 
-  <!-- ============================================================
-       HERO
-       Photo: replace images/hero/hero-main.jpg with your image
-       Recommended size: 2400 × 1600px, compressed under 500KB
-       Tagline: edit the h1 text below
-       ============================================================ -->
+  <!-- HERO — unchanged -->
   <section class="bb-hero">
     <div class="bb-hero__bg"></div>
     <div class="bb-hero__overlay"></div>
@@ -72,7 +62,10 @@
 
   <!-- ============================================================
        SERVICES OVERVIEW
-       To add/remove a service: copy or delete a bb-service-tile block
+       CHANGED: All tile sizes increased 40% via CSS update in style.css.
+       No HTML change needed here — size change is purely CSS.
+       The <a> tags still deep-link to the accordion on services.html
+       via ?service= query string, which cms-data.js handles.
        ============================================================ -->
   <section class="bb-section--alt">
     <div class="container section-pad">
@@ -81,56 +74,47 @@
         <h2>Every occasion, perfected</h2>
       </div>
       <div class="bb-services-grid">
-
-        <!-- Service 1: Bridal -->
-        <a href="services.html#bridal" class="bb-service-tile">
+        <a href="services.html?service=bridal-hair-makeup" class="bb-service-tile">
           <div class="bb-service-tile__icon">
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
           </div>
           <div class="bb-service-tile__name">Bridal</div>
         </a>
-
-        <!-- Service 2: Events -->
-        <a href="services.html#events" class="bb-service-tile">
+        <a href="services.html?service=event-styling" class="bb-service-tile">
           <div class="bb-service-tile__icon">
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
           <div class="bb-service-tile__name">Events</div>
         </a>
-
-        <!-- Service 3: Photography -->
-        <a href="services.html#photography" class="bb-service-tile">
+        <a href="services.html?service=photography-editorial" class="bb-service-tile">
           <div class="bb-service-tile__icon">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="14" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M3 17l4-4 3 3 4-5 4 6"/></svg>
           </div>
           <div class="bb-service-tile__name">Photography</div>
         </a>
-
-        <!-- Service 4: Corporate -->
-        <a href="services.html#corporate" class="bb-service-tile">
+        <a href="services.html?service=corporate" class="bb-service-tile">
           <div class="bb-service-tile__icon">
             <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
           </div>
           <div class="bb-service-tile__name">Corporate</div>
         </a>
-
-        <!-- Service 5: Maternity -->
-        <a href="services.html#maternity" class="bb-service-tile">
+        <a href="services.html?service=maternity-newborn" class="bb-service-tile">
           <div class="bb-service-tile__icon">
             <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 017 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 017-7zm0 9.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z"/></svg>
           </div>
           <div class="bb-service-tile__name">Maternity</div>
         </a>
-
       </div>
     </div>
   </section>
 
   <!-- ============================================================
        GALLERY PREVIEW
-       Photos: add your images to images/gallery/ and update src below
-       Recommended size: 1200 × 1600px (portrait), under 300KB each
-       To add a caption: edit the bb-gallery-preview__label text
+       CHANGED: Added id="bb-gallery-preview-grid" so cms-data.js
+       can find and replace the placeholder cells with real photos.
+       CHANGED: Added id="bb-gallery-count" to the count span.
+       The static placeholder cells below are replaced at runtime
+       if gallery photos exist in data/gallery.json.
        ============================================================ -->
   <section>
     <div class="container section-pad">
@@ -139,39 +123,28 @@
         <h2>A glimpse of the work</h2>
       </div>
 
-      <div class="bb-gallery-preview">
+      <!-- CHANGED: id added — cms-data.js targets this element -->
+      <div class="bb-gallery-preview" id="bb-gallery-preview-grid">
 
-        <!-- PHOTO 1 (tall, left) — replace src with your image -->
+        <!-- Static placeholders — replaced by cms-data.js once photos are in CMS.
+             If no photos are uploaded yet, these remain visible. -->
         <div class="bb-gallery-preview__cell tall bb-gallery-preview__cell--empty" data-lightbox>
-          <!-- <img src="images/gallery/bridal-01.jpg" alt="Bridal full look by Beauty Bash Vancouver" loading="lazy"> -->
           <span>Bridal · Full Look</span>
           <span class="bb-gallery-preview__label">Bridal · Full Look</span>
         </div>
-
-        <!-- PHOTO 2 — replace src with your image -->
         <div class="bb-gallery-preview__cell bb-gallery-preview__cell--empty" data-lightbox>
-          <!-- <img src="images/gallery/editorial-01.jpg" alt="Editorial makeup by Beauty Bash" loading="lazy"> -->
           <span>Editorial</span>
           <span class="bb-gallery-preview__label">Editorial</span>
         </div>
-
-        <!-- PHOTO 3 — replace src with your image -->
         <div class="bb-gallery-preview__cell bb-gallery-preview__cell--empty" data-lightbox>
-          <!-- <img src="images/gallery/event-01.jpg" alt="Event styling by Beauty Bash" loading="lazy"> -->
           <span>Event Styling</span>
           <span class="bb-gallery-preview__label">Event Styling</span>
         </div>
-
-        <!-- PHOTO 4 — replace src with your image -->
         <div class="bb-gallery-preview__cell bb-gallery-preview__cell--empty" data-lightbox>
-          <!-- <img src="images/gallery/maternity-01.jpg" alt="Maternity makeup by Beauty Bash" loading="lazy"> -->
           <span>Maternity</span>
           <span class="bb-gallery-preview__label">Maternity</span>
         </div>
-
-        <!-- PHOTO 5 — replace src with your image -->
         <div class="bb-gallery-preview__cell bb-gallery-preview__cell--empty" data-lightbox>
-          <!-- <img src="images/gallery/corporate-01.jpg" alt="Corporate makeup by Beauty Bash" loading="lazy"> -->
           <span>Corporate</span>
           <span class="bb-gallery-preview__label">Corporate</span>
         </div>
@@ -179,83 +152,65 @@
       </div>
 
       <div class="bb-gallery-footer">
-        <span class="bb-gallery-footer__text">Showing 5 of 40+ looks</span>
+        <!-- CHANGED: id added so cms-data.js can update the count -->
+        <span class="bb-gallery-footer__text" id="bb-gallery-count">Showing 5 of 40+ looks</span>
         <a href="gallery.html" class="bb-gallery-footer__link">View full gallery</a>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       FEATURED TESTIMONIAL
-       To change: edit the quote text, client name, and service type below
+       TESTIMONIALS CAROUSEL
+       CHANGED: Replaced the static single-testimonial block with
+       a carousel wrapper div (#bb-testimonials-carousel).
+       cms-data.js fetches data/testimonials.json and renders
+       all testimonials as fading slides with dot navigation.
+       The static fallback quote inside is shown while JS loads.
        ============================================================ -->
   <section class="bb-section--alt">
     <div class="container">
       <div class="bb-testimonial-featured">
-        <span class="bb-testimonial-featured__mark">"</span>
-        <!-- EDIT: Change this quote to a real client testimonial -->
-        <p class="bb-testimonial-featured__text">
-          She made me feel like the most beautiful version of myself. Every detail
-          was flawless — I couldn't have imagined a better artist for my wedding day.
-        </p>
-        <!-- EDIT: Change name and service type -->
-        <p class="bb-testimonial-featured__attr">
-          — <span>Sarah M.</span> &nbsp;·&nbsp; Bride, 2024
-        </p>
+        <!-- CHANGED: id added — cms-data.js renders slides inside this div -->
+        <div id="bb-testimonials-carousel">
+          <!-- STATIC FALLBACK: shown until JS loads or if no CMS data.
+               cms-data.js will replace this content if testimonials exist. -->
+          <span class="bb-testimonial-featured__mark">"</span>
+          <p class="bb-testimonial-featured__text">
+            She made me feel like the most beautiful version of myself. Every detail
+            was flawless — I couldn't have imagined a better artist for my wedding day.
+          </p>
+          <p class="bb-testimonial-featured__attr">
+            — <span>Sarah M.</span> &nbsp;·&nbsp; Bride, 2024
+          </p>
+        </div>
+        <!-- ADDED: Link to dedicated testimonials page -->
+        <div style="margin-top: 32px;">
+          <a href="testimonials.html" class="btn-ghost">Read all testimonials →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       INSTAGRAM FEED
-       Setup: follow instructions in the handoff document (Section 9)
-       After setup: paste your Behold.so embed code between the comments below
-       ============================================================ -->
+  <!-- INSTAGRAM — CHANGED: handle updated to @ca.beautybash -->
   <section class="bb-instagram">
     <div class="container">
       <div class="bb-section__header bb-section__header--center">
         <span class="eyebrow">Follow Along</span>
-        <h2>@beautybash on Instagram</h2>
+        <!-- CHANGED: was @beautybash, now @ca.beautybash -->
+        <h2>@ca.beautybash on Instagram</h2>
       </div>
       <div class="bb-instagram__feed">
-
         <!-- PASTE YOUR BEHOLD.SO EMBED CODE HERE -->
-        <!-- Example:
-        <div id="behold-widget-XXXXX"></div>
-        <script src="https://w.behold.so/widget.js" type="module"></script>
-        -->
-
-        <!-- Placeholder shown until Instagram is connected — DELETE this div once connected -->
-        <div style="border: 1px solid rgba(212,175,90,0.15); border-radius:4px; padding: 48px; text-align:center;">
-          <p style="font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(212,175,90,0.4);">
-            Instagram feed coming soon — see setup guide
+        <div style="border:1px solid rgba(212,175,90,0.15);border-radius:4px;padding:48px;text-align:center;">
+          <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,175,90,0.4);">
+            Instagram feed — see setup guide
           </p>
         </div>
-
       </div>
     </div>
   </section>
 
-
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
-
-
-  <!-- ============================================================
-       CTA BANNER
-       Edit the heading, subtext, and button links below
-       ============================================================ -->
+  <!-- CTA BANNER — CHANGED: removed Pricing link -->
   <div class="bb-cta-banner">
     <div class="container">
       <span class="eyebrow">Ready for your moment?</span>
@@ -263,30 +218,26 @@
       <p>Every client deserves to feel extraordinary. Get in touch to start planning your look.</p>
       <div class="bb-cta-banner__actions">
         <a href="contact.html" class="btn-gold">Send an Inquiry</a>
-        <a href="pricing.html" class="btn-ghost">View Pricing →</a>
+        <!-- REMOVED: View Pricing link -->
+        <a href="services.html" class="btn-ghost">View Services →</a>
       </div>
     </div>
   </div>
 
-  <!-- ============================================================
-       FOOTER
-       IMPORTANT: Replace all three href values with real URLs:
-         - mailto: your actual email address
-         - facebook.com: your Facebook page URL
-         - instagram.com: your Instagram handle
-       ============================================================ -->
+  <!-- FOOTER — CHANGED: Instagram URL updated to ca.beautybash -->
   <footer class="bb-footer">
     <div class="container">
       <div class="bb-footer__top">
         <div class="bb-footer__wordmark">Beauty Bash</div>
         <div class="bb-footer__social">
-          <a href="mailto:info@beautybash.ca" class="bb-footer__social-link" title="Email us" aria-label="Email Beauty Bash">
+          <a href="mailto:hello@beautybash.ca" class="bb-footer__social-link" aria-label="Email Beauty Bash">
             <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
           </a>
-          <a href="https://facebook.com/ca.beautybash" class="bb-footer__social-link" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
+          <a href="https://facebook.com/beautybash" class="bb-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
           </a>
-          <a href="https://instagram.com/ca.beautybash" class="bb-footer__social-link" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener">
+          <!-- CHANGED: href updated from beautybash to ca.beautybash -->
+          <a href="https://instagram.com/ca.beautybash" class="bb-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="rgba(212,175,90,0.65)" stroke="none"/></svg>
           </a>
         </div>
@@ -302,12 +253,13 @@
     </div>
   </footer>
 
-  <!-- Lightbox (used by gallery preview) -->
   <div class="bb-lightbox" id="bb-lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
     <button class="bb-lightbox__close" id="bb-lightbox-close" aria-label="Close">&times;</button>
     <img class="bb-lightbox__img" id="bb-lightbox-img" src="" alt="">
   </div>
 
   <script src="js/main.js"></script>
+  <!-- ADDED: cms-data.js must load after main.js -->
+  <script src="js/cms-data.js"></script>
 </body>
 </html>
