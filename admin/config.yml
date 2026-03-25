@@ -104,3 +104,12 @@ collections:
               - { label: "Description",         name: "description", widget: "text" }
               - { label: "Photo (optional)",    name: "image",       widget: "image",
                   required: false }
+
+      # ----------------------------------------------------------
+      # Token IG — 20260324
+      # ----------------------------------------------------------
+      - label: "Social Media Settings"
+        name: "social"
+        file: "data/settings.json"
+        fields:
+            - {label: "Instagram Access Token", name: "insta_token", widget: "string"}

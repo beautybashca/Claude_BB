@@ -39,8 +39,8 @@ ul { list-style: none; }
   --gold-35:    rgba(212,175,90,0.35);
   --text-primary:   #F5EFE5;
   --text-secondary: #EDE0C4;
-  --text-muted:     rgba(240,234,224,0.65);
-  --text-faint:     rgba(240,234,224,0.40);
+  --text-muted:     rgba(240,234,224,0.80);
+  --text-faint:     rgba(240,234,224,0.58);
   --serif: Georgia, 'Times New Roman', serif;
   --sans:  'Helvetica Neue', Helvetica, Arial, sans-serif;
   --max-width: 1100px;
@@ -56,7 +56,7 @@ h2 { font-size: clamp(24px, 3vw, 34px); margin-bottom: 1rem; }
 h3 { font-size: clamp(18px, 2vw, 22px); }
 p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
 .eyebrow {
-  display: block; font-size: 10px; letter-spacing: 0.32em;
+  display: block; font-size: 14px; letter-spacing: 0.32em;
   text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
 }
 
@@ -124,6 +124,75 @@ p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
 .bb-nav.is-open .bb-nav__toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .bb-nav.is-open .bb-nav__toggle span:nth-child(2) { opacity: 0; }
 .bb-nav.is-open .bb-nav__toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ============================================================
+   BEAUTY BASH — Theme toggle button styles
+   ============================================================
+   WHERE TO ADD:
+   Paste this block into style.css immediately after the
+   .bb-nav__toggle rules (the hamburger menu section).
+
+   The button is injected by theme-toggle.js — it doesn't
+   exist in the HTML, so you won't find it there.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Toggle button shell
+   Sits in the nav between the links and "Book Now" CTA.
+   Uses the same height as the nav CTA for visual alignment.
+---------------------------------------------------------- */
+.bb-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: 1px solid var(--gold-22);
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.bb-theme-toggle:hover {
+  border-color: var(--gold-35);
+}
+
+/* ----------------------------------------------------------
+   SVG icons inside the toggle
+   Both icons live in the DOM; CSS hides the inactive one.
+---------------------------------------------------------- */
+.bb-theme-toggle svg {
+  width: 14px;
+  height: 14px;
+  stroke: rgba(212, 175, 90, 0.7);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  position: absolute; /* Stack both icons in same space */
+  transition: opacity 0.2s;
+}
+
+.bb-theme-toggle {
+  position: relative; /* Contains the absolute SVGs above */
+}
+
+/* Dark mode (default): show moon, hide sun */
+.icon-moon { opacity: 1; }
+.icon-sun  { opacity: 0; }
+
+/* Light mode: show sun, hide moon */
+html.light-mode .icon-moon { opacity: 0; }
+html.light-mode .icon-sun  { opacity: 1; }
+
+/* In light mode, sun icon uses a darker gold */
+html.light-mode .bb-theme-toggle svg {
+  stroke: var(--gold);
+}
+
 
 /* ============================================================
    HERO
@@ -247,8 +316,8 @@ p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
    ============================================================ */
 .bb-testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; background: var(--gold-10); border: 1px solid var(--gold-10); border-radius: 4px; overflow: hidden; }
 .bb-testimonial-card { background: var(--bg-section); padding: 36px 30px; }
-.bb-testimonial-card__quote { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--text-secondary); line-height: 1.75; margin-bottom: 22px; }
-.bb-testimonial-card__attr { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); }
+.bb-testimonial-card__quote { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--text-secondary); line-height: 1.75; margin-bottom: 22px; }
+.bb-testimonial-card__attr { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-faint); }
 .bb-testimonial-card__attr span { color: var(--gold); }
 
 /* ============================================================
@@ -314,7 +383,7 @@ p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
 .bb-about-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--gold-10); border: 1px solid var(--gold-10); border-radius: 4px; overflow: hidden; }
 .bb-about-value { background: var(--bg-section); padding: 36px 26px; text-align: center; }
 .bb-about-value__title { font-family: var(--serif); font-size: 17px; color: var(--text-secondary); margin-bottom: 12px; }
-.bb-about-value__desc { font-size: 12px; color: var(--text-faint); line-height: 1.75; }
+.bb-about-value__desc { font-size: 13px; color: var(--text-faint); line-height: 1.75; }
 
 /* ============================================================
    CONTACT FORM
@@ -582,4 +651,212 @@ p  { color: var(--text-muted); font-size: 14px; line-height: 1.85; }
   .bb-gallery-full { grid-template-columns: 1fr; }
   .bb-about-values { grid-template-columns: 1fr; }
   .bb-footer__top { flex-direction: column; align-items: flex-start; gap: 18px; }
+}
+
+/* ============================================================
+   BEAUTY BASH — Light Mode Overrides
+   ============================================================
+   HOW THIS WORKS:
+   - The site's default is dark mode (defined in :root)
+   - When JS adds class="light-mode" to <html>, these
+     overrides replace the dark values with light ones
+   - Every colour references the same CSS variable names —
+     nothing else in the HTML or existing CSS needs to change
+
+   WHERE TO ADD THIS IN style.css:
+   Paste this entire block at the very end of style.css,
+   after all existing rules.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Light mode colour overrides
+   These mirror the :root block at the top of style.css
+   but swap the dark plum palette for warm ivory tones.
+----------------------------------------------------------*/ 
+
+html.light-mode {
+  /* Backgrounds — shifted 2-3 tones darker, warmer */
+  --bg-base:    #E8E0D5;
+  --bg-section: #DDD4C7;
+  --bg-cell:    #D2C8B8;
+  --bg-footer:  #C8BCAA;
+  --bg-nav:     rgba(232, 224, 213, 0.97);
+
+  /* Gold — unchanged, still reads well on these tones */
+  --gold:    #B8922E;
+  --gold-10: rgba(184,146,46,0.10);
+  --gold-15: rgba(184,146,46,0.18);
+  --gold-22: rgba(184,146,46,0.25);
+  --gold-35: rgba(184,146,46,0.40);
+
+  /* Text — unchanged, dark plum still works */
+  --text-primary:   #2A1A3E;
+  --text-secondary: #3D2D55;
+  --text-muted:     rgba(42, 26, 62, 0.68);
+  --text-faint:     rgba(42, 26, 62, 0.40);
+}
+
+
+/* ----------------------------------------------------------
+   Hero: the gradient needs explicit light-mode overrides
+   because it uses hardcoded hex values, not CSS variables.
+   ONLY the .bb-hero background changes — the overlay stays
+   so the text remains readable over photos.
+---------------------------------------------------------- */
+html.light-mode .bb-hero {
+  background: linear-gradient(165deg, #E8DEFF 0%, #FAF7F2 50%, #EFE6FF 100%);
+}
+
+html.light-mode .bb-hero__overlay {
+  background: linear-gradient(
+    to right,
+    rgba(250,247,242,0.82) 0%,
+    rgba(250,247,242,0.55) 52%,
+    rgba(250,247,242,0.15) 100%
+  );
+}
+
+/* In light mode the hero title needs to stay dark for readability */
+html.light-mode .bb-hero__title,
+html.light-mode .bb-hero__title em {
+  color: var(--text-primary);
+}
+
+/* Page hero gradient */
+html.light-mode .bb-page-hero {
+  background: linear-gradient(to bottom, #E8DEFF, var(--bg-base));
+}
+
+/* ----------------------------------------------------------
+   Toggle button — the sun/moon icon itself
+   Swaps the icon colour to stay visible against its bg.
+---------------------------------------------------------- */
+html.light-mode .bb-theme-toggle svg {
+  stroke: var(--text-secondary);
+}
+
+/* ----------------------------------------------------------
+   Lightbox stays dark in both modes — it's a focus overlay
+   and should always feel like a dimmed cinema backdrop.
+---------------------------------------------------------- */
+html.light-mode .bb-lightbox {
+  background: rgba(18, 8, 32, 0.96);
+}
+
+/* ----------------------------------------------------------
+   Accordion trigger hover — slightly different on light bg
+---------------------------------------------------------- */
+html.light-mode .bb-accordion__trigger:hover .bb-accordion__title {
+  color: var(--text-secondary);
+}
+
+/* ----------------------------------------------------------
+   Form inputs need explicit border strengthening on light bg
+   so they don't disappear into the ivory background.
+---------------------------------------------------------- */
+html.light-mode .bb-form__input,
+html.light-mode .bb-form__select,
+html.light-mode .bb-form__textarea {
+  border-color: var(--gold-22);
+  color: var(--text-primary);
+}
+
+html.light-mode .bb-form__input::placeholder,
+html.light-mode .bb-form__textarea::placeholder {
+  color: var(--text-faint);
+}
+
+/* ----------------------------------------------------------
+   Nav toggle hamburger lines — dark in light mode
+---------------------------------------------------------- */
+html.light-mode .bb-nav__toggle span {
+  background: var(--text-secondary);
+}
+
+
+/* ============================================================
+   INSTAGRAM FEED STYLES (Instafeed.js)
+   Added: March 2026 
+   Purpose: Creates a responsive grid for the Beauty Bash feed
+   ============================================================ */
+
+/* 1. The Container: This controls the "box" the photos sit in */
+#instafeed {
+    display: grid;
+    /* Create as many columns as fit, but make sure they are at least 200px wide */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* The gap between the photos */
+    gap: 15px;
+    /* Padding around the whole grid */
+    padding: 20px 0;
+}
+
+/* 2. The Links: Each photo is wrapped in a link <a> tag */
+#instafeed a {
+    display: block;
+    overflow: hidden; /* Keeps the zoom effect (below) contained */
+    border-radius: 8px; /* Smooths the corners of the photos */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Adds a subtle "lift" effect */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+/* 3. The Images: This makes sure the Instagram photos look uniform */
+#instafeed img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Forces photos to be perfect squares, even if they weren't originally */
+    aspect-ratio: 1 / 1; 
+    /* Ensures the photo fills the square without being squished */
+    object-fit: cover; 
+}
+
+/* 4. Hover Effect: Makes the photo slightly larger when the mouse is over it */
+#instafeed a:hover {
+    transform: scale(1.03); /* Zooms the photo in by 3% */
+    z-index: 10;
+}
+
+/* 5. Mobile Adjustment: If the screen is very small, show 2 photos per row */
+@media (max-width: 480px) {
+    #instafeed {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* =====================================================
+   LIGHT MODE — gallery preview cell fix
+   Explicit override because the empty placeholder cells
+   show the full background with no photo covering them.
+   ===================================================== */
+html.light-mode .bb-gallery-preview__cell {
+  background: var(--bg-cell);
+}
+
+html.light-mode .bb-gallery-preview__cell--empty {
+  background: var(--bg-cell);
+  /* Slightly darker border so cells are visible against the page */
+  border: 1px solid var(--gold-15);
+}
+
+/* The placeholder text label inside empty cells */
+html.light-mode .bb-gallery-preview__cell--empty span {
+  color: var(--text-faint);
+}
+
+/* The gap between cells (the grid background shows through) */
+html.light-mode .bb-gallery-preview {
+  background: var(--gold-15);
+}
+
+/* =====================================================
+   LIGHT MODE — body background fix
+   The body background-color is hardcoded in the original
+   CSS rather than using a variable, so it needs its own
+   explicit light-mode override.
+   ===================================================== */
+html.light-mode body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
 }

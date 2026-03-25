@@ -7,6 +7,47 @@
   <meta name="description" content="Read what clients are saying about Beauty Bash — luxury mobile hair and makeup in Vancouver, BC.">
   <meta property="og:title" content="Testimonials | Beauty Bash · Vancouver">
   <meta property="og:url" content="https://beautybash.ca/testimonials.html">
+  <!-- ============================================================
+     BEAUTY BASH — Favicon link tags
+     ============================================================
+     WHERE TO ADD: Inside the <head> of every HTML page,
+     after the <meta> tags and before <link rel="stylesheet">.
+
+     FILE PLACEMENT: Put all favicon files in the ROOT of your
+     project folder — the same level as index.html, NOT inside
+     css/ or images/. Netlify serves files from the root.
+
+     If favicon.io gave you a ZIP, it contains several files.
+     Place ALL of them in the project root.
+     ============================================================ -->
+
+  <!-- ── PRIMARY FAVICON (browser tab icon) ───────────────────
+       The .ico file works in all browsers including old IE.
+       favicon.ico must be in the project ROOT folder.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- ── APPLE TOUCH ICON (iPhone/iPad home screen) ───────────
+       When a visitor saves your site to their phone home screen
+       this icon appears. favicon.io generates apple-touch-icon.png.
+       Place it in the project ROOT.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- ── PNG FAVICONS (modern browsers prefer PNG over ICO) ────
+       favicon.io generates favicon-32x32.png and favicon-16x16.png.
+       Place both in the project ROOT.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- ── SITE MANIFEST (Android home screen / PWA) ────────────
+       favicon.io generates site.webmanifest.
+       Place it in the project ROOT.
+       If favicon.io did not provide this file, you can omit
+       this line — it's optional.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -105,5 +146,6 @@
 
   <script src="js/main.js"></script>
   <script src="js/cms-data.js"></script>
+  <script src="js/theme-toggle.js"></script>
 </body>
 </html>

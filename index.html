@@ -11,6 +11,47 @@
   <meta property="og:image" content="https://beautybash.ca/images/hero/hero-main.jpg">
   <meta property="og:url" content="https://beautybash.ca">
   <meta property="og:type" content="website">
+  <!-- ============================================================
+     BEAUTY BASH — Favicon link tags
+     ============================================================
+     WHERE TO ADD: Inside the <head> of every HTML page,
+     after the <meta> tags and before <link rel="stylesheet">.
+
+     FILE PLACEMENT: Put all favicon files in the ROOT of your
+     project folder — the same level as index.html, NOT inside
+     css/ or images/. Netlify serves files from the root.
+
+     If favicon.io gave you a ZIP, it contains several files.
+     Place ALL of them in the project root.
+     ============================================================ -->
+
+  <!-- ── PRIMARY FAVICON (browser tab icon) ───────────────────
+       The .ico file works in all browsers including old IE.
+       favicon.ico must be in the project ROOT folder.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- ── APPLE TOUCH ICON (iPhone/iPad home screen) ───────────
+       When a visitor saves your site to their phone home screen
+       this icon appears. favicon.io generates apple-touch-icon.png.
+       Place it in the project ROOT.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- ── PNG FAVICONS (modern browsers prefer PNG over ICO) ────
+       favicon.io generates favicon-32x32.png and favicon-16x16.png.
+       Place both in the project ROOT.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- ── SITE MANIFEST (Android home screen / PWA) ────────────
+       favicon.io generates site.webmanifest.
+       Place it in the project ROOT.
+       If favicon.io did not provide this file, you can omit
+       this line — it's optional.
+  ──────────────────────────────────────────────────────────── -->
+  <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -200,10 +241,10 @@
         <h2>@ca.beautybash on Instagram</h2>
       </div>
       <div class="bb-instagram__feed">
-        <!-- PASTE YOUR BEHOLD.SO EMBED CODE HERE -->
+        <div id="instafeed" class="instagram-grid"></div>
         <div style="border:1px solid rgba(212,175,90,0.15);border-radius:4px;padding:48px;text-align:center;">
           <p style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,175,90,0.4);">
-            Instagram feed — see setup guide
+            Instagram feed — WHAT TO DO?
           </p>
         </div>
       </div>
@@ -260,5 +301,39 @@
   <script src="js/main.js"></script>
   <!-- ADDED: cms-data.js must load after main.js -->
   <script src="js/cms-data.js"></script>
+  <script src="js/theme-toggle.js"></script>
+  <!-- ADDED: Instafeed library-->
+  <script src="https://unpkg.com/instafeed.js@2.0.0/dist/instafeed.min.js"></script>
+  <script>
+  // This looks for the file Decap CMS creates
+ // 1. Fetch the settings from your local JSON file
+fetch('/data/settings.json')
+  .then(response => response.json())
+  .then(settings => {
+    // THIS LINE IS KEY: Look in your browser console (F12) 
+    // to see exactly what 'settings' contains.
+    console.log("Settings loaded:", settings);
+
+    // If your JSON key is "access_token", use settings.access_token
+    // If your JSON key is "token", use settings.token
+    const token = settings.access_token || settings.token || settings.accessToken;
+
+    if (!token) {
+      throw new Error("Token not found in JSON. Check your key names!");
+    }
+
+    var feed = new Instafeed({
+      accessToken: token,
+      limit: 6,
+      target: 'instafeed',
+      template: '<a href="{{link}}"><img src="{{image}}" /></a>'
+    });
+
+    feed.run();
+  })
+  .catch(err => {
+    console.error("Error loading the feed:", err);
+  });
+</script>
 </body>
 </html>
