@@ -1,32 +1,200 @@
 {
   "items": [
     {
-      "name": "Sarah M.",
-      "service": "Bridal",
-      "year": "2024",
-      "quote": "She made me feel like the most beautiful version of myself. Every detail was flawless — I couldn't have imagined a better artist for my wedding day.",
-      "location": "Vancouver, BC"
-    },
-    {
-      "name": "Jessica L.",
-      "service": "Bridal",
-      "year": "2024",
-      "quote": "Worth every penny. I felt like a completely different person — but the best version of myself. My photos are stunning.",
-      "location": "North Vancouver, BC"
-    },
-    {
-      "name": "Michelle T.",
-      "service": "Corporate",
-      "year": "2024",
-      "quote": "Professional, talented, and so warm. She made the whole team feel at ease. Highly recommend for corporate events.",
+      "name": "Cristiane L.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2026",
+      "quote": "Amei o seu trabalho.",
       "location": "Burnaby, BC"
     },
     {
-      "name": "Alyssa P.",
-      "service": "Maternity",
+      "name": "Thauane",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Boa tarde Juliana!\nMuito obrigada por todo o carinho e atenção ontem, a maquiagem e o cabelo ficaram ótimos!",
+      "location": "Burnaby BC"
+    },
+    {
+      "name": "Leili G.",
+      "service": "Bridesmaid Hair",
+      "year": "2025",
+      "quote": "Oi Juliana!!\nVocês arrasaram no nosso cabelo e maquiagem!\nPessoal elogiou bastante!\nE vocês duas são super queridas!\nObrigada pelo carinho!",
+      "location": "Burnaby, BC"
+    },
+    {
+      "name": "Aline N.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Muito obrigada pela companhia de voces la em casa no sabado de manha. Muito obrigada por ajudar, me ajudar, ajudar a minha famila a se preparar para este momento tao especial. Voce e a Karina foram maravilhosas, a gente gostou muito, obrigada por cada detalhe, horas que voces passaram com a gente.",
+      "location": "Vancouver BC"
+    },
+    {
+      "name": "Sara G.",
+      "quote": "Hi Juliana, thank you so much for being so calm, collected, helpful, receptive to comments I made for the makeup and you did so well!! I was so happy with my makeup and hair! Thank you so much, I felt so pretty 🥰\nMuch love!",
+      "year": "2025",
+      "location": "Coquitlam, BC",
+      "service": "Bridal Hair and Makeup"
+    },
+    {
+      "name": "Melliza Q.",
+      "service": "Bridal Hair",
+      "year": "2025",
+      "location": "Surrey, BC",
+      "quote": "It was truly the best day! Thank you so much! I will make sure to recommend you to my friends 😊\nThank you for doing a beautiful job with my hair. You made my day stress-free!"
+    },
+    {
+      "name": "Jessica R.",
+      "quote": "Hi Juliana! We all loved our hair and makeup! It turned out beautifully and lasted all day!\nThank you so much for coming out! Everything was perfect 🥰",
+      "year": "2025",
+      "location": "Abbotsford, BC",
+      "service": "Bridal Hair and Makeup"
+    },
+    {
+      "name": "Cassandra S.",
+      "service": "Bridal Makeup",
+      "year": "2025",
+      "quote": "Thank you so much, the wedding was amazing! We all loved our makeup and it held up so well even though I was so sweaty all day haha! Thank you again for everything! ",
+      "location": "Harrison Hot Springs, BC"
+    },
+    {
+      "name": "Chasya R.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Thank you so much everything was so beautiful.",
+      "location": "Vancouver, BC"
+    },
+    {
+      "name": "Ella B.",
+      "quote": "You were such a wonderful part of me wedding day, thank you for making my curly updo dreams a reality, and for making everyone look and feel gorgeous! ",
+      "service": "Bridal Hair",
+      "year": "2025",
+      "location": "North Vancouver, BC"
+    },
+    {
+      "name": "Leslye B.",
+      "service": "Bridal Hair and Stepdaughter Makeup",
+      "year": "2025",
+      "quote": "It was fantastic!!!\nEveryone loved our makeup!",
+      "location": "North Vancouver, BC"
+    },
+    {
+      "name": "Rosanna S.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Hi Juliana! we absolutely loved the hair and make up you did for us. I had so many people compliment my look which really accentuated my dress. I felt so beautiful on my wedding day. Thank you for being part of our special day! ",
+      "location": "Duncan, Vancouver Island, BC"
+    },
+    {
+      "service": "Bridal Hair and Makeup",
+      "name": "Madelyn B.",
+      "year": "2025",
+      "location": "North Vancouver, BC",
+      "quote": "Hi! Thanks so much for getting me ready! It was a great day! Everything held up wonderfully!!"
+    },
+    {
+      "name": "Carla L.",
+      "service": "Bridal Hair",
+      "year": "2025",
+      "quote": "Thank you so much Juliana for being a part of our special day!  ",
+      "location": "New Westminister, BC"
+    },
+    {
+      "name": "Monica Y.",
+      "location": "Vancouver, BC",
+      "quote": "Thank you so much Juliana!!\nThe makeup was SOLID til the end of the night I appreciate you so much.",
+      "year": "2025",
+      "service": "Bridal Makeup"
+    },
+    {
+      "name": "Zameena R.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Thank you for bringing your warmth and kindness to my special day.",
+      "location": "Noth Vancouver, BC"
+    },
+    {
+      "name": "Andrea V.",
+      "quote": "Foi perfeito !! Todo muito elogiou o meu cabelo e maquiagem.\nFicou incrível !! Mais do que imaginava.\nMuitooo obrigada.",
+      "location": "Surrey, BC",
+      "year": "2025",
+      "service": "Bridal Hair and Makeup"
+    },
+    {
+      "name": "Aline O.",
+      "quote": "Foi tudo perfeitamente incrível!\nGratidão por tudo! Você é incrível de verdade!\nNossa que trabalho impecável!\nVai estar na minha lista sempre!",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "location": "Langley, BC"
+    },
+    {
+      "name": "Julia L.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2025",
+      "quote": "Thank you for everything Juliana! The makeup, it looked gorgeous and everyone complimented it 🥰",
+      "location": "Squamish, BC"
+    },
+    {
+      "name": "Keone G.",
+      "service": "Bridal Makeup & Bridesmaid Hair and Makeup",
+      "year": "2024",
+      "quote": "Thank you so much! You did such a beautiful job for us",
+      "location": "Vancouver, BC"
+    },
+    {
+      "name": "Lisa O.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2024",
+      "quote": "It was a pleasure to have you.",
+      "location": "Port McNeill, Vancouver Island, BC"
+    },
+    {
+      "name": "Chantal D.",
+      "service": "Bridesmaid Hair and Makeup",
+      "year": "2024",
+      "location": "Port McNeill, Vancouver Island, BC",
+      "quote": "Hey Juliana! I wanted to reach out and thank you for the make up and hair last Saturday! I’ve never felt so amazing, you are so great at what you do!  I also wanted to share a picture Lisa and I took on her wedding day!,  Oh and, could i please get a picture of that lipstick shade you used on me, totally forgot, i loved it!!"
+    },
+    {
+      "name": "Megan S.",
+      "service": " Bridesmaid Hair",
+      "year": "2024",
+      "quote": "Thank you so much Juliana! You were such a lovely presence to have on our special day! Thank you so much for being there you did a fantastic job with the bridesmaids’ hair  I will be sure to give you a fantastic review!",
+      "location": "Langley, BC"
+    },
+    {
+      "name": "Fatima G.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2024",
+      "location": "Burnaby, BC",
+      "quote": "Hi Juliana.\nThank you so much for making the look a reality. Your attention and care definitely calmed my nerves and made sure that I looked my best.\nThank you for all your work!"
+    },
+    {
+      "name": "Tatiana S.",
+      "service": "Bridal Hair & Mother-of-Bride Hair and Makeup",
       "year": "2023",
-      "quote": "My maternity photos are everything I dreamed of. The makeup was soft, beautiful, and lasted all day. Absolute perfection.",
+      "quote": "Juuuuuu, bom dia!!!! Tudo bem?\nJu primeiramente nem sei como lhe agradecer, pelo seu trabalho, carinho e por ser tão especial e cuidar da gente com tanto amor e delicadeza….obrigada por fazer parte desse um momento de uma forma tão especial jamais esqueceremos.",
       "location": "Richmond, BC"
+    },
+    {
+      "name": "Elena F.",
+      "service": "Bridal Hair and Makeup",
+      "year": "2023",
+      "quote": "And thank you again for making the hair and makeup process for my wedding so stress free and organized and everything turned out so amazing!!",
+      "location": "Richmond, BC"
+    },
+    {
+      "name": "Janice L.",
+      "service": "Bridal Hair",
+      "year": "2023",
+      "quote": "Muitissimo obrigada,\nFiquei super feliz com o meu cabelo.",
+      "location": "Vancouver, BC"
+    },
+    {
+      "name": "Rachel A.",
+      "service": "Bridal Hair and Makeup & Mother-of-Bride Hair and Makeup",
+      "year": "2023",
+      "quote": "Passando so pata te agradecer mais uma vez. Falar que nos fizemos muito, mas muito, mas muito sucesso. Minha mae tambem fez mutio sucesso. Foi comparada a atriz de Hollywood. Nossa, ela esta assim se achando linda e maravilhosa.\nEu recebi tantos elgogios de maravilhosa, da mulher mais da festa.\nMuitissimo obrigada. Ficou tudo perfeito, muito obrigada mesmo.\nBeijo Ju",
+      "location": "Vancouver, BC"
     }
   ]
 }
