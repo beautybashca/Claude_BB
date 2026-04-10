@@ -112,4 +112,4 @@ collections:
         name: "social"
         file: "data/settings.json"
         fields:
-            - {label: "Instagram Access Token", name: "insta_token", widget: "string"}
+            - {label: "Instagram Access Token", name: "access_token", widget: "string"}

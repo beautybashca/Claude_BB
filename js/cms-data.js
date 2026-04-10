@@ -183,7 +183,10 @@ async function renderGalleryPreview() {
   const data = await bbFetch('/data/gallery.json');
   if (!data || !data.items || data.items.length === 0) return;
 
-  const photos = data.items.slice(0, 5);
+  // ADDED: shuffle all photos into a random order first,
+  // then take the first 5 — different selection every page load
+    const shuffled = data.items.slice().sort(() => Math.random() - 0.5);
+    const photos = shuffled.slice(0, 5);
   const tallClass = ['tall', '', '', '', ''];
 
   el.innerHTML = photos.map((photo, i) => `

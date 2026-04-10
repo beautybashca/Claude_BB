@@ -1,9 +1,246 @@
 {
   "items": [
     {
-      "image": "/images/uploads/07640c40-5300-4cc4-bfcc-32855d88c4e6-1_all_35901.jpg",
-      "tag": "Bridal Makeup by Beauty Bash",
-      "alt": "Bridal Makeup by Beauty Bash Asian bride elegant Vancouver "
+      "image": "/images/gallery/beautybash_bridal_2023-05-27_040.jpg",
+      "tag": "Woman with curly hair, glitter eyeshadow, and dangling earrings.",
+      "alt": "Woman with curly hair, glitter eyeshadow, and dangling earrings."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2023-05-27_041.jpg",
+      "tag": "Woman with curly hair, sparkling makeup, and a flower-shaped earring smiling.",
+      "alt": "Woman with curly hair, sparkling makeup, and a flower-shaped earring smiling."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2023-05-27_044.jpg",
+      "tag": "Woman with curly hair smiling, wearing jewelry and makeup",
+      "alt": "Woman with curly hair smiling, wearing jewelry and makeup"
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2024-07-20_037.jpg",
+      "tag": "Red updo with dried flowers and pearl earring",
+      "alt": "Red updo with dried flowers and pearl earring"
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2024-07-20_042.jpg",
+      "tag": "Bride with natural makeup and pearl earrings smiling.",
+      "alt": "Bride with natural makeup and pearl earrings smiling."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2024-07-20_046.jpg",
+      "tag": "Woman with natural makeup, dark hair, and a green robe.",
+      "alt": "Woman with natural makeup, dark hair, and a green robe."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2024-09-14_001.jpg",
+      "tag": "Elegant braided updo for brown hair with subtle highlights.",
+      "alt": "Elegant braided updo for brown hair with subtle highlights."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2024-09-14_002.jpg",
+      "tag": "Woman's braided updo with highlights.",
+      "alt": "Woman's braided updo with highlights."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-01-19_039.jpg",
+      "tag": "Elegant updo with pearl and crystal hair accessory.",
+      "alt": "Elegant updo with pearl and crystal hair accessory."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_003.jpg",
+      "tag": "Bride with curly hair, pearl earrings, and a gold necklace smiles for camera.",
+      "alt": "Bride with curly hair, pearl earrings, and a gold necklace smiles for camera."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_004.jpg",
+      "tag": "Bride with curly hair smiling, wearing pearl earrings and necklace.",
+      "alt": "Bride with curly hair smiling, wearing pearl earrings and necklace."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_005.jpg",
+      "tag": "Bride with curly hair and pearl jewelry.",
+      "alt": "Bride with curly hair and pearl jewelry."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_006.jpg",
+      "tag": "Woman with curly hair and pearl earrings, smiling softly.",
+      "alt": "Woman with curly hair and pearl earrings, smiling softly."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_007.jpg",
+      "tag": "Bride with curly hair and pearl earrings, wearing makeup.",
+      "alt": "Bride with curly hair and pearl earrings, wearing makeup."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_008.jpg",
+      "tag": "Bride smiling, wearing pearl earrings and a pearl necklace.",
+      "alt": "Bride smiling, wearing pearl earrings and a pearl necklace."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-02-15_009.jpg",
+      "tag": "Bride with curly updo and pearl-adorned veil.",
+      "alt": "Bride with curly updo and pearl-adorned veil."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-03-16_038.jpg",
+      "tag": "Woman's auburn hair styled in a half-up, braided updo with curls.",
+      "alt": "Woman's auburn hair styled in a half-up, braided updo with curls."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-03-16_043.jpg",
+      "tag": "Woman with auburn hair and professional makeup in a green top.",
+      "alt": "Woman with auburn hair and professional makeup in a green top."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-03-23_010.jpg",
+      "tag": "Black curly hair styled into a braided updo, viewed from behind",
+      "alt": "Black curly hair styled into a braided updo, viewed from behind"
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-03-23_011.jpg",
+      "tag": "Black curly hair with a floral hair accessory.",
+      "alt": "Black curly hair with a floral hair accessory."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-06-07_012.jpg",
+      "tag": "Woman with glam makeup and hair styled in curlers, wearing black robe.",
+      "alt": "Woman with glam makeup and hair styled in curlers, wearing black robe."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-06-07_013.jpg",
+      "tag": "Woman with gold eye makeup and bronze lipstick wearing a black satin robe.",
+      "alt": "Woman with gold eye makeup and bronze lipstick wearing a black satin robe."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-06-14_014.jpg",
+      "tag": "Bride with elegant updo and sparkling hairpiece, women in formal dresses in background",
+      "alt": "Bride with elegant updo and sparkling hairpiece, women in formal dresses in background"
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-11_015.jpg",
+      "tag": "Bridal textured blonde updo with a low, romantic bun and soft curls",
+      "alt": "Textured blonde updo with a low, romantic bun and soft curls, bride"
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-28_016.jpg",
+      "tag": "Woman with blue eyes, fresh makeup, and blonde highlighted curly hair.",
+      "alt": "Woman with blue eyes, fresh makeup, and blonde highlighted curly hair."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-28_017.jpg",
+      "tag": "Beautiful woman with professional natural glam makeup, closed eyes, long lashes, nude lips, and blonde highlights.",
+      "alt": "Beautiful woman with professional natural glam makeup, closed eyes, long lashes, nude lips, and blonde highlights."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-28_018.jpg",
+      "tag": "Woman with half-up blonde and brown hair, wearing a black off-the-shoulder top.",
+      "alt": "Woman with half-up blonde and brown hair, wearing a black off-the-shoulder top."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-28_019.jpg",
+      "tag": "Elegant half-up half-down hairstyle featuring twisted strands, cascading curls, and blonde highlights.",
+      "alt": "Elegant half-up half-down hairstyle featuring twisted strands, cascading curls, and blonde highlights."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-07-28_020.jpg",
+      "tag": "Side profile of a woman with a half-up braided hairstyle and blonde curls, wearing a black dress.",
+      "alt": "Side profile of a woman with a half-up braided hairstyle and blonde curls, wearing a black dress."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-01_021.jpg",
+      "tag": "Close-up of a smiling woman with brown hair, wearing a green strap top and a silver necklace.",
+      "alt": "Close-up of a smiling woman with brown hair, wearing a green strap top and a silver necklace."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-01_022.jpg",
+      "tag": "Woman with radiant glam makeup, gold eyeshadow, glowing skin, and a subtle smile.",
+      "alt": "Woman with radiant glam makeup, gold eyeshadow, glowing skin, and a subtle smile."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-02_023.jpg",
+      "tag": "Bride getting ready, mom helps with earrings, wedding day.",
+      "alt": "Bride getting ready, mom helps with earrings, wedding day."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-02_024.jpg",
+      "tag": "Elegant bridal updo with curly hair, pearl accessory, and a lace high-neck dress.",
+      "alt": "Elegant bridal updo with curly hair, pearl accessory, and a lace high-neck dress."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-06_025.jpg",
+      "tag": "Headshot of a smiling young woman with natural makeup, long dark wavy hair, and a white lace top.",
+      "alt": "Headshot of a smiling young woman with natural makeup, long dark wavy hair, and a white lace top."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-08-06_026.jpg",
+      "tag": "Elegant bride with sparkling crystal hair vine and lace wedding veil.",
+      "alt": "Elegant bride with sparkling crystal hair vine and lace wedding veil."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-09-26_027.jpg",
+      "tag": "Smiling bride with beautiful bridal makeup, dark hair, and a white lace wedding dress.",
+      "alt": "Smiling bride with beautiful bridal makeup, dark hair, and a white lace wedding dress."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-09-26_028.jpg",
+      "tag": "Smiling bride in white lace wedding dress holding a white rose and dahlia bouquet.",
+      "alt": "Smiling bride in white lace wedding dress holding a white rose and dahlia bouquet."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-09-26_029.jpg",
+      "tag": "Bride smiling, holding white floral bouquet in lace wedding dress.",
+      "alt": "Bride smiling, holding white floral bouquet in lace wedding dress."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-09-26_047.jpg",
+      "tag": "Beautiful smiling bride holding a white rose and dahlia wedding bouquet.",
+      "alt": "Beautiful smiling bride holding a white rose and dahlia wedding bouquet."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-09-26_048.jpg",
+      "tag": "Smiling bride in white lace wedding dress holding elegant white rose and dahlia bouquet.",
+      "alt": "Smiling bride in white lace wedding dress holding elegant white rose and dahlia bouquet."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_030.jpg",
+      "tag": "Bride in white dress and veil smiling, close up.",
+      "alt": "Bride in white dress and veil smiling, close up."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_031.jpg",
+      "tag": "Bride in white dress and veil smiling, looking over shoulder.",
+      "alt": "Bride in white dress and veil smiling, looking over shoulder."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_032.jpg",
+      "tag": "Happy bride in an elegant off-the-shoulder white wedding dress, necklace, and veil.",
+      "alt": "Happy bride in an elegant off-the-shoulder white wedding dress, necklace, and veil."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_033.jpg",
+      "tag": "Smiling bride in elegant white wedding dress with necklace.",
+      "alt": "Smiling bride in elegant white wedding dress with necklace."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_034.jpg",
+      "tag": "Smiling bride in white wedding dress forming a heart with her hands.",
+      "alt": "Smiling bride in white wedding dress forming a heart with her hands."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_035.jpg",
+      "tag": "Smiling bride in elegant off-the-shoulder wedding dress, veil, and pearl jewelry.",
+      "alt": "Smiling bride in elegant off-the-shoulder wedding dress, veil, and pearl jewelry."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2025-10-25_036.jpg",
+      "tag": "Smiling bride in white wedding dress, diamond necklace, holding white rose bouquet.",
+      "alt": "Smiling bride in white wedding dress, diamond necklace, holding white rose bouquet."
+    },
+    {
+      "image": "/images/gallery/beautybash_bridal_2026-04-08_045.jpg",
+      "tag": "Bride in white beaded wedding gown, elegant faux fur shrug, and stylish short blonde hair.",
+      "alt": "Bride in white beaded wedding gown, elegant faux fur shrug, and stylish short blonde hair."
     }
   ]
 }
+
+
